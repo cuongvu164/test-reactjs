@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import MyRef from './unit-21/MyRef'
+import MyHOC from './unit-21/HOC'
+import { MyGlobalContext } from './context/MyGlobalContext'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      value: {
+        name: 'Nguyen Van A',
+        age: 12
+      }
+    }
+  }
+  render() {
+    return(
+      <MyGlobalContext.Provider value={this.state.value}>
+        <MyRef/>
+
+        <br></br>
+        <hr></hr>
+
+        <MyHOC />
+
+
+      </MyGlobalContext.Provider>
+    )
+  }
 }
 
 export default App;
